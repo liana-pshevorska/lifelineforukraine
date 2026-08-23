@@ -148,8 +148,10 @@ description: "Lifeline for Ukraine Inc. buys the tourniquets, IFAKs, and blood-c
     <div class="trust__item">
       <h3 class="trust__title">100% to medical aid</h3>
       <p class="trust__text">
-        No salaries and no overhead are taken from your gift. We believe in full financial
-        transparency and are accountable to our donors.
+        No salaries and no overhead are taken from your gift.{% if site.donate.provider != "paypal" %}
+        We also chose giving methods that charge us nothing, so no processing fee is skimmed
+        either &mdash; a $50 donation buys $50 of supplies.{% endif %} We are accountable to
+        our donors for every cent.
       </p>
     </div>
     <div class="trust__item">

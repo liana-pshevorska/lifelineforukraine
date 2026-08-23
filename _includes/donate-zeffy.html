@@ -1,0 +1,46 @@
+{%- comment -%}
+  Zeffy takes no platform fee and no processing fee from the organization, so the whole
+  donation reaches medical aid. It is a hosted form we link out to rather than embed:
+  an iframe needs a fixed height, behaves badly on mobile, and buys nothing here.
+
+  Zeffy also offers iframe embeds and platform plugins; if you ever switch to one,
+  re-check that the donate page still works on a phone.
+{%- endcomment -%}
+{%- assign zeffy_url = site.donate.zeffy_url -%}
+{%- if zeffy_url == nil or zeffy_url == "" -%}
+  {% include donate-unavailable.html %}
+{%- else -%}
+<div class="give-card give-card--zeffy">
+  <div class="give-card__head">
+    <h3 class="give-card__title">Give by card</h3>
+    <p class="give-card__note">One-time or monthly. Takes about a minute.</p>
+  </div>
+
+  <div class="give-card__body">
+    <p class="give-card__lead">
+      <a class="btn btn--donate btn--block" href="{{ zeffy_url }}" target="_blank" rel="noopener">
+        Donate by card
+      </a>
+    </p>
+    <p class="give-card__zero">No fees. Your $50 arrives as $50.</p>
+  </div>
+
+  <ol class="give-steps">
+    <li>Choose an amount, and whether to give once or <strong>every month</strong>.</li>
+    <li>Pay by card on Zeffy&rsquo;s secure form.</li>
+    <li>Your tax receipt is emailed to you automatically.</li>
+  </ol>
+
+  <p class="give-card__recurring">
+    <strong>Monthly gifts matter most.</strong> A regular donation is what lets us commit to
+    an order before the money is in, instead of waiting for it to arrive.
+  </p>
+
+  <p class="give-card__fineprint">
+    We use Zeffy because it charges non-profits nothing — no platform fee, no processing fee
+    — so your entire donation reaches medical aid. Zeffy keeps it free by asking donors at
+    checkout whether they would like to add an optional contribution <em>to Zeffy</em>. That
+    is separate from your gift to us and entirely your choice.
+  </p>
+</div>
+{%- endif -%}

@@ -1,0 +1,13 @@
+{%- comment -%}
+  Dispatches to whichever online giving provider is configured. Every branch — including
+  the unconfigured one — must leave the donor with something that actually works, which in
+  practice means Zelle. Never render a payment link that cannot reach this organization.
+{%- endcomment -%}
+{%- assign provider = site.donate.provider | default: "none" -%}
+{%- if provider == "zeffy" -%}
+  {% include donate-zeffy.html %}
+{%- elsif provider == "paypal" -%}
+  {% include donate-paypal.html %}
+{%- else -%}
+  {% include donate-unavailable.html %}
+{%- endif -%}

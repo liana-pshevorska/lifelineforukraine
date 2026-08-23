@@ -9,16 +9,17 @@ permalink: /donate/
   <div class="wrap wrap--narrow">
     <h1 class="donate-hero__title">Donate</h1>
     <p class="donate-hero__lede">
-      Give whichever way is fastest for you. <strong>100% of what you send is spent on
-      medical aid</strong> &mdash; tourniquets, blood-clotting gauze, and IFAKs requested by
-      medics in Ukraine.
+      Give whichever way is fastest for you.{% if site.donate.provider != "paypal" %} Neither
+      option charges us a fee, so{% endif %} <strong>100% of what you send is spent on medical
+      aid</strong> &mdash; tourniquets, blood-clotting gauze, and IFAKs requested by medics in
+      Ukraine.
     </p>
   </div>
 </section>
 
 <section class="section section--tight">
   <div class="wrap give-grid">
-    {% include donate-paypal.html %}
+    {% include donate-card.html %}
     {% include donate-zelle.html %}
   </div>
 </section>

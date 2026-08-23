@@ -38,6 +38,17 @@ funding.
 no administrative cut. We believe in full financial transparency and are accountable to our
 donors.
 
+{% if site.donate.provider == "zeffy" %}That claim survives contact with the payment
+processors, because we picked ours for exactly that reason. Zelle moves money bank to bank at
+no cost. Zeffy, which handles card donations, charges non-profits no platform fee and no
+processing fee — it stays free by asking donors whether they would like to add an optional
+contribution to Zeffy, separate from their gift to us. A card donation of $35 reaches us as
+$35.{% elsif site.donate.provider == "paypal" %}One honest caveat: card and PayPal donations
+pass through PayPal, which deducts its charity rate of 1.99% plus $0.49 before the money
+reaches us. Giving by Zelle or by check avoids that entirely — those arrive
+whole.{% else %}Both of the ways to give on this site — Zelle and a mailed check — move money
+at no cost, so nothing is deducted before it reaches us.{% endif %}
+
 You can verify our tax-exempt status through the
 [IRS Tax Exempt Organization Search](https://apps.irs.gov/app/eos/) using our EIN,
 {{ site.org.ein }}. Our [updates]({{ '/updates/' | relative_url }}) page is the running
