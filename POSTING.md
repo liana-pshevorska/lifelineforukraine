@@ -8,8 +8,9 @@ publishes the site in about a minute. There is nothing to install and nothing to
 1. Go to the repository on GitHub and open the **`_posts`** folder.
 2. Click **Add file → Create new file**.
 3. Name it `YYYY-MM-DD-short-title.md` — for example
-   `2026-09-14-kharkiv-delivery.md`. **The date in the filename is required**, and it is
-   what orders the post on the site.
+   `2026-09-14-kharkiv-delivery.md`. **The date in the filename is required.** If the
+   post also sets `date:` in its settings (the template below does), that one wins for
+   ordering and for the date shown on the page — so keep the two the same.
 4. Paste the template below and edit it.
 5. Scroll down, click **Commit changes**.
 6. Wait ~60 seconds, then reload the site. The post appears on the homepage, on

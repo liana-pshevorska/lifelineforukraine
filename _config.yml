@@ -28,11 +28,13 @@ org:
 # ─── Donations ───────────────────────────────────────────────────────────────
 donate:
   # TODO: paste the hosted button ID from PayPal → Pay & Get Paid → PayPal Buttons → Donate.
-  # While this is empty the page shows a plain PayPal link instead of the inline button,
-  # so nothing is ever broken.
+  # While both this and paypal_url are empty, the donate page says PayPal is not switched
+  # on yet and points donors at Zelle. Never put a bare https://www.paypal.com/donate here:
+  # that is PayPal's generic donation page and cannot route a cent to this organization.
   paypal_button_id: ""
-  # Fallback used when paypal_button_id is empty. A PayPal.me link works here too.
-  paypal_fallback_url: "https://www.paypal.com/donate"
+  # Optional stand-in used only when paypal_button_id is empty — an organization-specific
+  # link such as https://www.paypal.com/paypalme/<yourhandle>.
+  paypal_url: ""
   zelle_tag: "lifelineforukraine"
   zelle_qr: "/assets/img/zelle-qr.png"
   # TODO: confirm the Zelle-enrolled email address shown in your bank app

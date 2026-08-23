@@ -2,22 +2,37 @@
   PayPal's official Donate SDK. The donor stays on this page and completes the gift in a
   PayPal popup — card payments and monthly recurring gifts included.
 
-  Set `donate.paypal_button_id` in _config.yml to switch this on. Until then (and if the
-  SDK is ever blocked by an ad blocker or a network failure) the plain link below is what
-  the donor sees, so this card is never broken.
+  Three states, in order of preference:
+    1. `donate.paypal_button_id` set  → inline SDK button, with an organization-specific
+       paypal.com/donate?hosted_button_id=… link behind it if the SDK is blocked.
+    2. only `donate.paypal_url` set   → a plain styled link (a PayPal.me address, say).
+    3. neither set                    → an honest "not available yet" notice.
+
+  State 3 must never render a bare paypal.com/donate link: that opens PayPal's generic
+  donation page, which cannot route a cent to this organization while looking like it works.
 {%- endcomment -%}
+{%- assign pp_id = site.donate.paypal_button_id -%}
+{%- assign pp_url = site.donate.paypal_url -%}
+{%- assign pp_ready = false -%}
+{%- if pp_id and pp_id != "" -%}{%- assign pp_ready = true -%}{%- endif -%}
+{%- if pp_url and pp_url != "" -%}{%- assign pp_ready = true -%}{%- endif -%}
+
 <div class="give-card give-card--paypal">
   <div class="give-card__head">
     <h3 class="give-card__title">Give with PayPal or card</h3>
-    <p class="give-card__note">One-time or monthly. No PayPal account required.</p>
+    <p class="give-card__note">
+      {% if pp_ready %}One-time or monthly. No PayPal account required.
+      {% else %}Not switched on yet — please use Zelle or a check for now.{% endif %}
+    </p>
   </div>
 
+  {% if pp_ready %}
   <div class="give-card__body">
     <div id="paypal-donate" class="paypal-mount"></div>
 
     <p id="paypal-fallback" class="paypal-fallback">
       <a class="btn btn--donate btn--block"
-         href="{% if site.donate.paypal_button_id and site.donate.paypal_button_id != "" %}https://www.paypal.com/donate?hosted_button_id={{ site.donate.paypal_button_id }}{% else %}{{ site.donate.paypal_fallback_url }}{% endif %}"
+         href="{% if pp_id and pp_id != "" %}https://www.paypal.com/donate?hosted_button_id={{ pp_id }}{% else %}{{ pp_url }}{% endif %}"
          target="_blank" rel="noopener">Donate with PayPal</a>
     </p>
   </div>
@@ -27,9 +42,19 @@
     <li>Pay with your PayPal balance, a bank account, or any major card.</li>
     <li>PayPal emails you a receipt — keep it for your taxes.</li>
   </ol>
+
+  {% else %}
+  <div class="give-card__body">
+    <p class="give-notice">
+      We are still setting up online card and PayPal giving. Until it is live, the fastest
+      way to give is <strong>Zelle</strong> — and a check works too. Both are on this page,
+      and 100% of either reaches medical aid.
+    </p>
+  </div>
+  {% endif %}
 </div>
 
-{% if site.donate.paypal_button_id and site.donate.paypal_button_id != "" %}
+{% if pp_id and pp_id != "" %}
 <script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
 <script>
   (function () {
@@ -39,7 +64,7 @@
     try {
       PayPal.Donation.Button({
         env: 'production',
-        hosted_button_id: {{ site.donate.paypal_button_id | jsonify }},
+        hosted_button_id: {{ pp_id | jsonify }},
         image: {
           src: 'https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif',
           alt: 'Donate with PayPal button',

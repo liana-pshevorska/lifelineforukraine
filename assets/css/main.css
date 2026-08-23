@@ -309,7 +309,7 @@ code {
 .give-grid {
   display: grid; gap: var(--s3);
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  align-items: stretch;
+  align-items: start;
 }
 .give-card {
   border: 1px solid var(--line); border-radius: var(--radius-lg);
@@ -321,9 +321,22 @@ code {
 .give-card__note { color: var(--ink-soft); font-size: .9375rem; margin: 0; }
 .give-card__body { margin-bottom: var(--s3); }
 .give-card__body--zelle { display: grid; gap: var(--s3); }
+.give-card__recurring {
+  background: var(--mist); border-radius: var(--radius);
+  padding: var(--s2); margin: var(--s2) 0 0;
+  font-size: .875rem; color: var(--ink-mid);
+}
+.give-card__recurring strong { color: var(--navy-900); }
+
 .give-card__fineprint {
   color: var(--ink-soft); font-size: .8125rem; margin: var(--s2) 0 0;
   padding-top: var(--s2); border-top: 1px solid var(--line);
+}
+
+.give-notice {
+  background: var(--mist); border-left: 4px solid var(--gold-500);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  padding: var(--s2); margin: 0; color: var(--ink-mid); font-size: .9375rem;
 }
 
 .paypal-mount { display: flex; justify-content: center; }

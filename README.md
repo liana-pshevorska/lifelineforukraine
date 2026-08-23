@@ -19,7 +19,7 @@ Each is marked `TODO` in the file listed.
 
 | What | Where | Until then |
 | --- | --- | --- |
-| PayPal **hosted button ID** | `_config.yml` → `donate.paypal_button_id` | The donate card shows a plain PayPal link |
+| PayPal **hosted button ID** | `_config.yml` → `donate.paypal_button_id` | The donate card says PayPal is not switched on yet and points donors at Zelle |
 | Zelle email address (optional) | `_config.yml` → `donate.zelle_email` | Only the Zelle Tag is shown |
 | Public contact email | `_config.yml` → `org.email` | The phone number is shown instead |
 | Real impact numbers | `_data/impact.yml` | The homepage shows the word `TODO` |
@@ -32,9 +32,20 @@ Each is marked `TODO` in the file listed.
 
 Log in to the PayPal nonprofit account → **Pay & Get Paid → PayPal Buttons → Donate**.
 Create the button and copy the `hosted_button_id` value out of the code PayPal generates.
+**While creating it, turn on the recurring-donation option** — that is what gives donors the
+"Make this a monthly donation" checkbox, and monthly donors are worth far more than one-off
+gifts. (Recurring is a property of the button itself; the SDK only exposes a `no_recurring`
+flag to switch it off, which this site does not set.)
 Paste just that ID into `_config.yml`. The page then renders PayPal's official inline
 donate button, which supports cards and monthly recurring gifts without the donor leaving
-the site.
+the site. If the SDK is ever blocked by an ad blocker, the card falls back to a
+`paypal.com/donate?hosted_button_id=<your id>` link — still specific to this organization.
+
+If PayPal giving is not set up yet, leave `paypal_button_id` empty and the card honestly
+says so, pointing donors at Zelle. **Do not** put a bare `https://www.paypal.com/donate`
+in `paypal_url` as a placeholder: that is PayPal's generic donation page and will not route
+anything to Lifeline, while looking to the donor like it worked. A PayPal.me address for
+the organization is a valid `paypal_url`; nothing else is.
 
 ### About the Zelle code
 
