@@ -39,10 +39,9 @@ donate:
   # none   — the card is replaced by an honest notice pointing donors at Zelle.
   provider: zeffy
 
-  # TODO: paste the Zeffy donation form link once the account is approved
-  # (Zeffy dashboard → your donation campaign → Share → copy link).
-  # While this is empty the page says card giving is not switched on yet.
-  zeffy_url: ""
+  # The organization's Zeffy donation form. Verified live, with one-time and monthly
+  # options. If it ever changes, this is the only place it needs updating.
+  zeffy_url: "https://www.zeffy.com/en-US/donation-form/lifeline-for-ukraine"
 
   # Only used when provider is "paypal". Get the hosted button ID from
   # PayPal → Pay & Get Paid → PayPal Buttons → Donate, and enable recurring there.

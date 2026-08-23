@@ -19,7 +19,6 @@ Each is marked `TODO` in the file listed.
 
 | What | Where | Until then |
 | --- | --- | --- |
-| Zeffy **donation form link** | `_config.yml` → `donate.zeffy_url` | The card says card giving is not switched on yet and points donors at Zelle |
 | Zelle email address (optional) | `_config.yml` → `donate.zelle_email` | Only the Zelle Tag is shown |
 | Public contact email | `_config.yml` → `org.email` | The phone number is shown instead |
 | Real impact numbers | `_data/impact.yml` | The homepage shows the word `TODO` |
