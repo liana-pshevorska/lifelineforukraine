@@ -16,13 +16,13 @@ root="$PWD"
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 
-mk () { # name  provider  zeffy_url  paypal_button_id
+mk () { # name  provider  zeffy_url  paypal_button_id  paypal_url
   cat > "$tmp/$1.yml" <<YAML
 donate:
   provider: "$2"
   zeffy_url: "$3"
   paypal_button_id: "$4"
-  paypal_url: ""
+  paypal_url: "${5:-}"
   zelle_tag: "lifelineforukraine"
   zelle_qr: "/assets/img/zelle-qr.png"
   zelle_email: ""
@@ -30,11 +30,12 @@ YAML
   bundle exec jekyll build -s "$root" -d "$tmp/$1" --config "$root/_config.yml,$tmp/$1.yml" -q
 }
 
-# name          provider  zeffy_url                          paypal_button_id
-mk unconfigured zeffy     ""                                 ""
-mk zeffy        zeffy     "https://www.zeffy.com/example"    ""
-mk paypal       paypal    ""                                 "EXAMPLE123"
-mk none         none      ""                                 ""
+# name          provider  zeffy_url                        paypal_button_id  paypal_url
+mk unconfigured zeffy     ""                               ""
+mk zeffy        zeffy     "https://www.zeffy.com/example"  ""
+mk paypal       paypal    ""                               "EXAMPLE123"
+mk paypalme     paypal    ""                               ""                "https://www.paypal.com/paypalme/example"
+mk none         none      ""                               ""
 
 fails=0
 want () { # build  file  present|absent  needle  description
@@ -68,6 +69,15 @@ want paypal donate/index.html absent  "Nothing is deducted on the way"      'fee
 want paypal index.html        absent  "No processing fees"                  'trust strip drops the no-fee line'
 want paypal about/index.html  present "1.99%"                               'about page discloses the rate'
 want paypal about/index.html  absent  "reaches us as"                       'no fee-free arithmetic'
+want paypal index.html        absent  "buys \$50 of supplies"               'trust strip drops the $50 arithmetic'
+
+echo "provider: paypal via PayPal.me only — still a live PayPal route, still not fee-free"
+want paypalme donate/index.html present "paypalme/example"            'links to the org-specific PayPal.me address'
+want paypalme donate/index.html present "PayPal emails a receipt"     'receipt names PayPal'
+want paypalme donate/index.html absent  "donate-sdk.js"               'no SDK without a hosted button ID'
+want paypalme donate/index.html absent  "Nothing is deducted on the way" 'fee-free claim withdrawn'
+want paypalme index.html        absent  "No processing fees"          'trust strip drops the no-fee line'
+want paypalme index.html        absent  "buys \$50 of supplies"        'no fee-free arithmetic'
 
 echo "provider: none — Zelle and check only, both free"
 want none donate/index.html present "Not switched on yet"                   'fallback notice shown'
