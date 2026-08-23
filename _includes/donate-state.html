@@ -1,0 +1,40 @@
+{%- comment -%}
+  Single source of truth for "what can a donor actually do right now, and does it cost us".
+  Include this before any copy that depends on the answer — the site makes public claims
+  about fees and about which provider sends the receipt, and those must never outrun the
+  configuration.
+
+  Liquid `assign`s inside an include are visible to the caller, so including this at the top
+  of a page exposes:
+
+    card_ready     true only when the configured provider has a usable link/ID
+    card_provider  the raw setting: zeffy | paypal | none
+    card_name      display name of the live provider ("Zeffy", "PayPal"), empty if not ready
+    fees_free      true when nothing is deducted on any live route to us
+
+  Note fees_free is true when card giving is not ready at all: what is left is Zelle and
+  check, both of which cost nothing.
+{%- endcomment -%}
+{%- assign card_provider = site.donate.provider | default: "none" -%}
+{%- assign card_ready = false -%}
+{%- assign card_name = "" -%}
+
+{%- if card_provider == "zeffy" -%}
+  {%- if site.donate.zeffy_url and site.donate.zeffy_url != "" -%}
+    {%- assign card_ready = true -%}
+    {%- assign card_name = "Zeffy" -%}
+  {%- endif -%}
+{%- elsif card_provider == "paypal" -%}
+  {%- if site.donate.paypal_button_id and site.donate.paypal_button_id != "" -%}
+    {%- assign card_ready = true -%}
+  {%- endif -%}
+  {%- if site.donate.paypal_url and site.donate.paypal_url != "" -%}
+    {%- assign card_ready = true -%}
+  {%- endif -%}
+  {%- if card_ready -%}{%- assign card_name = "PayPal" -%}{%- endif -%}
+{%- endif -%}
+
+{%- assign fees_free = true -%}
+{%- if card_ready and card_provider == "paypal" -%}
+  {%- assign fees_free = false -%}
+{%- endif -%}

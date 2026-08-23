@@ -4,6 +4,8 @@ title: "Medical aid to the front line"
 description: "Lifeline for Ukraine Inc. buys the tourniquets, IFAKs, and blood-clotting gauze that front-line medics ask for, and delivers them through trusted partners in Ukraine. 100% of donations are spent on medical aid."
 ---
 
+{%- include donate-state.html -%}
+
 <section class="hero">
   <div class="wrap hero__inner">
     <p class="hero__eyebrow">501(c)(3) non-profit &middot; West Hartford, Connecticut</p>
@@ -11,10 +13,9 @@ description: "Lifeline for Ukraine Inc. buys the tourniquets, IFAKs, and blood-c
       The supplies that stop the bleeding, bought for the medics who asked for them.
     </h1>
     <p class="hero__lede">
-      Lifeline for Ukraine delivers Individual First Aid Kits, tourniquets, and
-      blood-clotting gauze to communities and servicemen impacted by the Russian-Ukrainian
-      war. We are connected directly to doctors and soldiers who tell us what they are out
-      of. <strong>100% of your donation is spent on medical aid.</strong>
+      Doctors and soldiers in Ukraine tell us what they have run out of. We buy exactly
+      that &mdash; Individual First Aid Kits, tourniquets, blood-clotting gauze &mdash; and
+      trusted partners carry it the last mile.
     </p>
     <p class="hero__actions">
       <a class="btn btn--donate btn--lg" href="{{ '/donate/' | relative_url }}">Donate</a>
@@ -64,8 +65,7 @@ description: "Lifeline for Ukraine Inc. buys the tourniquets, IFAKs, and blood-c
   <div class="wrap">
     <h2 class="section__title">How your donation gets there</h2>
     <p class="section__lede">
-      Four steps, no detours. We are a small organization on purpose — it is why nothing is
-      skimmed off along the way.
+      Four steps, no detours. We are small on purpose.
     </p>
 
     <ol class="steps">
@@ -81,8 +81,8 @@ description: "Lifeline for Ukraine Inc. buys the tourniquets, IFAKs, and blood-c
         <p class="step__num">2</p>
         <h3 class="step__title">You give</h3>
         <p class="step__text">
-          By PayPal, card, or Zelle. Your gift is tax-deductible and goes into one pool
-          spent only on supplies.
+          {% if card_ready %}By card or Zelle{% else %}By Zelle or check{% endif %}. Your
+          gift is tax-deductible and goes into one pool spent only on supplies.
         </p>
       </li>
       <li class="step">
@@ -120,8 +120,8 @@ description: "Lifeline for Ukraine Inc. buys the tourniquets, IFAKs, and blood-c
   <div class="wrap">
     <h2 class="section__title">Latest updates</h2>
     <p class="section__lede">
-      Where the money went, and what arrived. We publish this because &ldquo;100% goes to
-      aid&rdquo; is a claim, and claims should be checkable.
+      Where the money went, and what arrived. Any charity can say its money reaches the
+      front line; this is where we show it.
     </p>
     <div class="post-grid">
       {% for post in site.posts limit: 3 %}
@@ -148,10 +148,9 @@ description: "Lifeline for Ukraine Inc. buys the tourniquets, IFAKs, and blood-c
     <div class="trust__item">
       <h3 class="trust__title">100% to medical aid</h3>
       <p class="trust__text">
-        No salaries and no overhead are taken from your gift.{% if site.donate.provider != "paypal" %}
-        We also chose giving methods that charge us nothing, so no processing fee is skimmed
-        either &mdash; a $50 donation buys $50 of supplies.{% endif %} We are accountable to
-        our donors for every cent.
+        No salaries. No overhead.{% if fees_free %} No processing fees &mdash; we chose
+        giving methods that charge us nothing.{% endif %} Your $50 buys $50 of supplies, and
+        we publish where it went.
       </p>
     </div>
     <div class="trust__item">

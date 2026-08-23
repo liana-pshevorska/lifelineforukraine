@@ -1,18 +1,19 @@
 ---
 layout: default
 title: "Donate"
-description: "Give to Lifeline for Ukraine by PayPal, card, Zelle, or check. 100% of donations are spent on medical aid for Ukraine. EIN 99-2880632."
+description: "Give to Lifeline for Ukraine by card, Zelle, or check. 100% of donations are spent on medical aid for Ukraine. EIN 99-2880632."
 permalink: /donate/
 ---
+
+{%- include donate-state.html -%}
 
 <section class="donate-hero">
   <div class="wrap wrap--narrow">
     <h1 class="donate-hero__title">Donate</h1>
     <p class="donate-hero__lede">
-      Give whichever way is fastest for you.{% if site.donate.provider != "paypal" %} Neither
-      option charges us a fee, so{% endif %} <strong>100% of what you send is spent on medical
-      aid</strong> &mdash; tourniquets, blood-clotting gauze, and IFAKs requested by medics in
-      Ukraine.
+      Under a minute, either way. Your money buys tourniquets, blood-clotting gauze, and
+      IFAKs that medics in Ukraine asked for by name.{% if fees_free %}
+      <strong>Nothing is deducted on the way.</strong>{% endif %}
     </p>
   </div>
 </section>
@@ -63,8 +64,9 @@ permalink: /donate/
     <p>
       {{ site.org.legal_name }} is a 501(c)(3) tax-exempt organization (EIN
       {{ site.org.ein }}). Donations are tax-deductible to the extent allowed by law.
-      PayPal emails a receipt automatically; for Zelle or check donations, contact us if you
-      need an acknowledgement letter for your records.
+      {% if card_ready %}{{ card_name }} emails a receipt automatically; for{% else %}For{% endif %}
+      Zelle or check donations, contact us if you need an acknowledgement letter for your
+      records.
     </p>
 
     <h2>A note on safety</h2>

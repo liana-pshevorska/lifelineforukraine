@@ -3,11 +3,11 @@
   the unconfigured one — must leave the donor with something that actually works, which in
   practice means Zelle. Never render a payment link that cannot reach this organization.
 {%- endcomment -%}
-{%- assign provider = site.donate.provider | default: "none" -%}
-{%- if provider == "zeffy" -%}
-  {% include donate-zeffy.html %}
-{%- elsif provider == "paypal" -%}
-  {% include donate-paypal.html %}
-{%- else -%}
+{%- include donate-state.html -%}
+{%- if card_ready == false -%}
   {% include donate-unavailable.html %}
+{%- elsif card_provider == "zeffy" -%}
+  {% include donate-zeffy.html %}
+{%- elsif card_provider == "paypal" -%}
+  {% include donate-paypal.html %}
 {%- endif -%}

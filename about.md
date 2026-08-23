@@ -6,6 +6,8 @@ permalink: /about/
 description: "Lifeline for Ukraine Inc. is a 501(c)(3) non-profit in West Hartford, Connecticut providing critical medical supplies to communities impacted by the Russian-Ukrainian war."
 ---
 
+{%- include donate-state.html -%}
+
 ## Our mission
 
 Lifeline for Ukraine Inc. provides critical medical supplies to communities impacted by the
@@ -35,24 +37,22 @@ funding.
 ## Transparency
 
 **100% of your donations are spent on medical aid for Ukraine.** No salaries, no overhead,
-no administrative cut. We believe in full financial transparency and are accountable to our
-donors.
+no administrative cut.
 
-{% if site.donate.provider == "zeffy" %}That claim survives contact with the payment
-processors, because we picked ours for exactly that reason. Zelle moves money bank to bank at
-no cost. Zeffy, which handles card donations, charges non-profits no platform fee and no
-processing fee — it stays free by asking donors whether they would like to add an optional
-contribution to Zeffy, separate from their gift to us. A card donation of $35 reaches us as
-$35.{% elsif site.donate.provider == "paypal" %}One honest caveat: card and PayPal donations
-pass through PayPal, which deducts its charity rate of 1.99% plus $0.49 before the money
-reaches us. Giving by Zelle or by check avoids that entirely — those arrive
-whole.{% else %}Both of the ways to give on this site — Zelle and a mailed check — move money
-at no cost, so nothing is deducted before it reaches us.{% endif %}
+{% if card_ready and card_provider == "zeffy" %}We picked our payment methods so that stays
+true end to end. Zelle moves money bank to bank at no cost, and Zeffy charges non-profits no
+platform fee and no processing fee — it stays free by asking donors whether they want to add
+an optional contribution to Zeffy, separate from their gift to us. A $35 donation reaches us
+as $35.{% elsif card_ready and card_provider == "paypal" %}One caveat, stated plainly: card
+donations pass through PayPal, which deducts its charity rate of 1.99% plus $0.49 before the
+money reaches us. Zelle and checks arrive whole.{% else %}Both ways to give on this site —
+Zelle and a mailed check — move money at no cost. Nothing is deducted before it reaches
+us.{% endif %}
 
-You can verify our tax-exempt status through the
-[IRS Tax Exempt Organization Search](https://apps.irs.gov/app/eos/) using our EIN,
-{{ site.org.ein }}. Our [updates]({{ '/updates/' | relative_url }}) page is the running
-record of what your donations actually bought.
+Verify our tax-exempt status through the
+[IRS Tax Exempt Organization Search](https://apps.irs.gov/app/eos/) using EIN
+{{ site.org.ein }}. Our [updates]({{ '/updates/' | relative_url }}) page is the running record
+of what donations actually bought.
 
 {% comment %}
 TODO before launch: add the team/board section, and link the most recent Form 990
