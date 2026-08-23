@@ -1,0 +1,78 @@
+---
+layout: default
+title: "Donate"
+description: "Give to Lifeline for Ukraine by PayPal, card, Zelle, or check. 100% of donations are spent on medical aid for Ukraine. EIN 99-2880632."
+permalink: /donate/
+---
+
+<section class="donate-hero">
+  <div class="wrap wrap--narrow">
+    <h1 class="donate-hero__title">Donate</h1>
+    <p class="donate-hero__lede">
+      Two ways to give, both of them fast. <strong>100% of what you send is spent on
+      medical aid</strong> &mdash; tourniquets, blood-clotting gauze, and IFAKs requested by
+      medics in Ukraine.
+    </p>
+  </div>
+</section>
+
+<section class="section section--tight">
+  <div class="wrap give-grid">
+    {% include donate-paypal.html %}
+    {% include donate-zelle.html %}
+  </div>
+</section>
+
+<section class="section section--mist">
+  <div class="wrap">
+    <h2 class="section__title">What your donation buys</h2>
+    {% include tiers.html %}
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap wrap--narrow prose">
+    <h2>Other ways to give</h2>
+
+    <h3>By check</h3>
+    <p>Make it payable to <strong>{{ site.org.legal_name }}</strong> and mail it to:</p>
+    <p class="address">
+      {{ site.org.legal_name }}<br>
+      {{ site.org.street }}<br>
+      {{ site.org.city }}, {{ site.org.state }} {{ site.org.zip }}
+    </p>
+
+    <h3>Employer matching</h3>
+    <p>
+      Many employers match charitable gifts dollar for dollar, and most matching portals
+      only need our name and EIN: <strong>{{ site.org.legal_name }}</strong>, EIN
+      <strong>{{ site.org.ein }}</strong>. It is ten minutes of paperwork that can double
+      the number of kits we send.
+    </p>
+
+    <h3>Donor-advised funds and stock</h3>
+    <p>
+      We can accept gifts from a donor-advised fund. Please
+      {% if site.org.email and site.org.email != "" %}<a href="mailto:{{ site.org.email }}">email us</a>{% else %}call
+      <a href="tel:{{ site.org.phone_link }}">{{ site.org.phone }}</a>{% endif %}
+      first so we can make sure it is routed correctly.
+    </p>
+
+    <h2>Tax deductibility</h2>
+    <p>
+      {{ site.org.legal_name }} is a 501(c)(3) tax-exempt organization (EIN
+      {{ site.org.ein }}). Donations are tax-deductible to the extent allowed by law.
+      PayPal emails a receipt automatically; for Zelle or check donations, contact us if you
+      need an acknowledgement letter for your records.
+    </p>
+
+    <h2>A note on safety</h2>
+    <p>
+      We will only ever ask you to give through the methods on this page. We do not solicit
+      donations by direct message, we do not accept gift cards or cryptocurrency, and we
+      will never ask you to send money to an individual&rsquo;s account. Before you confirm a
+      Zelle payment, check that your bank shows the recipient as
+      <strong>LIFELINE FOR UKRAINE INC</strong>.
+    </p>
+  </div>
+</section>

@@ -1,0 +1,13 @@
+<div class="tiers">
+  {% for tier in site.data.tiers %}
+  <div class="tier{% if tier.featured %} tier--featured{% endif %}">
+    {% if tier.featured %}<p class="tier__flag">Most needed</p>{% endif %}
+    <p class="tier__amount">${{ tier.amount }}</p>
+    <p class="tier__item">{{ tier.item }}</p>
+    <p class="tier__desc">{{ tier.description }}</p>
+  </div>
+  {% endfor %}
+</div>
+<p class="tiers__note">
+  Give any amount you like — these are just the things your gift turns into.
+</p>

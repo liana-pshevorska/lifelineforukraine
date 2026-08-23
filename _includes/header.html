@@ -1,0 +1,28 @@
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="brand" href="{{ '/' | relative_url }}">
+      <span class="brand__mark" aria-hidden="true">
+        <svg viewBox="0 0 32 32" width="32" height="32" focusable="false">
+          <rect width="32" height="32" rx="6" fill="#F5C518"/>
+          <path d="M16 7v18M7 16h18" stroke="#0A2145" stroke-width="4.5" stroke-linecap="square"/>
+        </svg>
+      </span>
+      <span class="brand__text">
+        <span class="brand__name">Lifeline for Ukraine</span>
+        <span class="brand__sub">Medical aid to the front line</span>
+      </span>
+    </a>
+
+    {%- comment -%}
+      The Donate button is a sibling of the nav, not a child, so that on narrow screens it
+      can stay on the top row next to the logo while the links drop to a second row.
+    {%- endcomment -%}
+    <a class="btn btn--donate btn--sm site-header__cta" href="{{ '/donate/' | relative_url }}">Donate</a>
+
+    <nav class="site-nav" aria-label="Main">
+      {% for item in site.data.nav %}
+        <a href="{{ item.url | relative_url }}">{{ item.title }}</a>
+      {% endfor %}
+    </nav>
+  </div>
+</header>

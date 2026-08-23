@@ -1,0 +1,58 @@
+{%- comment -%}
+  Zelle has no web API, button, or payment link — it lives inside bank apps and is
+  addressed by Zelle Tag, email, or US mobile number. So the job here is to make the tag
+  effortless to scan, tap, or copy.
+
+  The QR below was cropped from the bank-issued code and verified to decode to:
+  https://enroll.zellepay.com/qr-codes?data=<base64 of
+  {"name":"LIFELINE FOR UKRAINE INC","action":"payment","token":"lifelineforukraine"}>
+{%- endcomment -%}
+<div class="give-card give-card--zelle">
+  <div class="give-card__head">
+    <h3 class="give-card__title">Give with Zelle</h3>
+    <p class="give-card__note">Bank to bank. No processing fees at all — every cent arrives.</p>
+  </div>
+
+  <div class="give-card__body give-card__body--zelle">
+    <a class="zelle-qr"
+       href="https://enroll.zellepay.com/qr-codes?data=ewogICJuYW1lIiA6ICJMSUZFTElORSBGT1IgVUtSQUlORSBJTkMiLAogICJhY3Rpb24iIDogInBheW1lbnQiLAogICJ0b2tlbiIgOiAibGlmZWxpbmVmb3J1a3JhaW5lIgp9"
+       target="_blank" rel="noopener">
+      <img src="{{ site.donate.zelle_qr | relative_url }}" width="597" height="597"
+           alt="Zelle QR code for Lifeline for Ukraine Inc. Scan it in your bank's app, or tap it on a phone."><span class="zelle-qr__hint">Scan with your bank&rsquo;s app &mdash; or tap, on a phone</span>
+    </a>
+
+    <div class="zelle-tag">
+      <p class="zelle-tag__label">Or send to this Zelle Tag</p>
+      <div class="copy-field">
+        <code id="zelle-tag-value">{{ site.donate.zelle_tag }}</code>
+        <button type="button" class="copy-btn" data-copy-target="#zelle-tag-value" data-copy-label="Copy">
+          Copy
+        </button>
+      </div>
+      {% if site.donate.zelle_email and site.donate.zelle_email != "" %}
+      <p class="zelle-tag__label">Or this email address</p>
+      <div class="copy-field">
+        <code id="zelle-email-value">{{ site.donate.zelle_email }}</code>
+        <button type="button" class="copy-btn" data-copy-target="#zelle-email-value" data-copy-label="Copy">
+          Copy
+        </button>
+      </div>
+      {% endif %}
+      <p class="zelle-tag__confirm">
+        Your bank should show <strong>LIFELINE FOR UKRAINE INC</strong> before you confirm.
+        If it shows any other name, stop and <a href="tel:{{ site.org.phone_link }}">call us</a>.
+      </p>
+    </div>
+  </div>
+
+  <ol class="give-steps">
+    <li>Open your bank&rsquo;s mobile app and find <strong>Send with Zelle</strong>.</li>
+    <li>Scan the code above, or enter the tag <strong>{{ site.donate.zelle_tag }}</strong>.</li>
+    <li>Check the name reads LIFELINE FOR UKRAINE INC, then send.</li>
+  </ol>
+
+  <p class="give-card__fineprint">
+    Zelle works inside 2,400+ US bank and credit-union apps. It is not available on this
+    website, and we will never ask you to send money anywhere else.
+  </p>
+</div>

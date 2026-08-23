@@ -1,0 +1,15 @@
+# Suggested giving amounts, each tied to a concrete item you actually buy.
+# TODO: replace `amount` with your real per-item costs, then delete this line.
+- amount: 35
+  item: "One tourniquet"
+  description: "A CAT-style tourniquet stops catastrophic bleeding in under a minute. Medics ask for these more than anything else."
+- amount: 75
+  item: "Blood-clotting gauze"
+  description: "Hemostatic gauze for wounds a tourniquet cannot reach — junctional injuries to the neck, shoulder, and groin."
+- amount: 150
+  item: "One complete IFAK"
+  description: "A full Individual First Aid Kit: tourniquet, gauze, chest seal, decompression needle, shears, and a pressure bandage."
+  featured: true
+- amount: 750
+  item: "Five IFAKs for a squad"
+  description: "Enough kits to equip a full squad before rotation to a front-line position."

@@ -1,0 +1,55 @@
+{%- comment -%}
+  PayPal's official Donate SDK. The donor stays on this page and completes the gift in a
+  PayPal popup — card payments and monthly recurring gifts included.
+
+  Set `donate.paypal_button_id` in _config.yml to switch this on. Until then (and if the
+  SDK is ever blocked by an ad blocker or a network failure) the plain link below is what
+  the donor sees, so this card is never broken.
+{%- endcomment -%}
+<div class="give-card give-card--paypal">
+  <div class="give-card__head">
+    <h3 class="give-card__title">Give with PayPal or card</h3>
+    <p class="give-card__note">One-time or monthly. No PayPal account required.</p>
+  </div>
+
+  <div class="give-card__body">
+    <div id="paypal-donate" class="paypal-mount"></div>
+
+    <p id="paypal-fallback" class="paypal-fallback">
+      <a class="btn btn--donate btn--block"
+         href="{% if site.donate.paypal_button_id and site.donate.paypal_button_id != "" %}https://www.paypal.com/donate?hosted_button_id={{ site.donate.paypal_button_id }}{% else %}{{ site.donate.paypal_fallback_url }}{% endif %}"
+         target="_blank" rel="noopener">Donate with PayPal</a>
+    </p>
+  </div>
+
+  <ol class="give-steps">
+    <li>Choose an amount, or tick <strong>Make this a monthly donation</strong>.</li>
+    <li>Pay with your PayPal balance, a bank account, or any major card.</li>
+    <li>PayPal emails you a receipt — keep it for your taxes.</li>
+  </ol>
+</div>
+
+{% if site.donate.paypal_button_id and site.donate.paypal_button_id != "" %}
+<script src="https://www.paypalobjects.com/donate/sdk/donate-sdk.js" charset="UTF-8"></script>
+<script>
+  (function () {
+    var fallback = document.getElementById('paypal-fallback');
+    // SDK blocked, offline, or still loading: leave the plain link in place.
+    if (!window.PayPal || !window.PayPal.Donation) return;
+    try {
+      PayPal.Donation.Button({
+        env: 'production',
+        hosted_button_id: {{ site.donate.paypal_button_id | jsonify }},
+        image: {
+          src: 'https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif',
+          alt: 'Donate with PayPal button',
+          title: 'PayPal — the safer, easier way to pay online'
+        }
+      }).render('#paypal-donate');
+      fallback.hidden = true;
+    } catch (e) {
+      fallback.hidden = false;
+    }
+  })();
+</script>
+{% endif %}

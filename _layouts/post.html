@@ -1,0 +1,32 @@
+---
+layout: default
+---
+<article class="post">
+  <header class="post__header">
+    <div class="wrap wrap--narrow">
+      <p class="post__meta">
+        <a class="post__back" href="{{ '/updates/' | relative_url }}">&larr; All updates</a>
+      </p>
+      <h1 class="post__title">{{ page.title }}</h1>
+      <p class="post__date">
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %-d, %Y" }}</time>
+        {% if page.location %}<span class="post-card__loc">{{ page.location }}</span>{% endif %}
+      </p>
+    </div>
+  </header>
+
+  {% if page.image %}
+  <figure class="post__hero">
+    <img src="{{ page.image | relative_url }}" alt="{{ page.image_alt | default: '' }}">
+    {% if page.image_caption %}<figcaption>{{ page.image_caption }}</figcaption>{% endif %}
+  </figure>
+  {% endif %}
+
+  <div class="wrap wrap--narrow prose">
+    {{ content }}
+  </div>
+</article>
+
+{% include donate-cta.html
+   title="This is what your donation does"
+   text="Updates like this one exist because someone gave. 100% of every gift is spent on medical aid." %}

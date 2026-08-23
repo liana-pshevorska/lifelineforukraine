@@ -1,0 +1,72 @@
+# ─── Site identity ───────────────────────────────────────────────────────────
+title: Lifeline for Ukraine
+tagline: Critical medical supplies for communities impacted by the Russian-Ukrainian war
+description: >-
+  Lifeline for Ukraine Inc. is a 501(c)(3) non-profit that delivers Individual First Aid
+  Kits, tourniquets, and blood-clotting gauze to trusted partners in Ukraine.
+  100% of donations are spent on medical aid.
+
+# Set this to your final address once the domain is live, e.g. https://lifelineforukraine.org
+# GitHub Pages fills it in automatically if you leave it blank.
+url: ""
+baseurl: ""
+
+# ─── Organization details (used across the site — edit here, nowhere else) ───
+org:
+  legal_name: Lifeline for Ukraine Inc.
+  ein: 99-2880632
+  street: 16 Duffield Dr
+  city: West Hartford
+  state: Connecticut
+  zip: 06107-1213
+  country: United States
+  phone: "617-528-8670"
+  phone_link: "+16175288670"
+  # TODO: add a public contact address before launch
+  email: ""
+
+# ─── Donations ───────────────────────────────────────────────────────────────
+donate:
+  # TODO: paste the hosted button ID from PayPal → Pay & Get Paid → PayPal Buttons → Donate.
+  # While this is empty the page shows a plain PayPal link instead of the inline button,
+  # so nothing is ever broken.
+  paypal_button_id: ""
+  # Fallback used when paypal_button_id is empty. A PayPal.me link works here too.
+  paypal_fallback_url: "https://www.paypal.com/donate"
+  zelle_tag: "lifelineforukraine"
+  zelle_qr: "/assets/img/zelle-qr.png"
+  # TODO: confirm the Zelle-enrolled email address shown in your bank app
+  zelle_email: ""
+
+# ─── Social (leave blank to hide the link) ───────────────────────────────────
+social:
+  facebook: ""
+  instagram: ""
+  x: ""
+  linkedin: ""
+
+# ─── Build ───────────────────────────────────────────────────────────────────
+permalink: /updates/:year/:month/:day/:title/
+timezone: America/New_York
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-sitemap
+
+feed:
+  path: /feed.xml
+
+defaults:
+  - scope: { path: "", type: "posts" }
+    values: { layout: "post" }
+  - scope: { path: "" }
+    values: { layout: "page" }
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - README.md
+  - POSTING.md
+  - .claude

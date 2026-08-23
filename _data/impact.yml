@@ -1,0 +1,12 @@
+# The numbers in the band across the homepage.
+# TODO: replace every value below with your real figures before launch.
+# Keep `value` short — it is set in very large type.
+- value: "TODO"
+  label: "IFAKs delivered"
+  note: "Individual First Aid Kits in the hands of medics and soldiers"
+- value: "TODO"
+  label: "Tourniquets sent"
+  note: "The single most effective tool against battlefield blood loss"
+- value: "100%"
+  label: "Of donations spent on aid"
+  note: "No salaries, no overhead taken from your gift"

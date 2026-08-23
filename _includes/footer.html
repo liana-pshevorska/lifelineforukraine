@@ -1,0 +1,53 @@
+<footer class="site-footer">
+  <div class="wrap site-footer__inner">
+
+    <div class="site-footer__org">
+      <p class="site-footer__name">{{ site.org.legal_name }}</p>
+      <p class="site-footer__addr">
+        {{ site.org.street }}<br>
+        {{ site.org.city }}, {{ site.org.state }} {{ site.org.zip }}<br>
+        <a href="tel:{{ site.org.phone_link }}">{{ site.org.phone }}</a>
+        {% if site.org.email and site.org.email != "" %}<br><a href="mailto:{{ site.org.email }}">{{ site.org.email }}</a>{% endif %}
+      </p>
+    </div>
+
+    <div class="site-footer__links">
+      <p class="site-footer__heading">Site</p>
+      <ul>
+        {% for item in site.data.nav %}<li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>{% endfor %}
+        <li><a href="{{ '/donate/' | relative_url }}">Donate</a></li>
+        <li><a href="{{ '/feed.xml' | relative_url }}">Updates RSS</a></li>
+      </ul>
+    </div>
+
+    <div class="site-footer__social">
+      {%- assign has_social = false -%}
+      {%- for pair in site.social -%}
+        {%- if pair[1] and pair[1] != "" -%}{%- assign has_social = true -%}{%- endif -%}
+      {%- endfor -%}
+      {% if has_social %}
+      <p class="site-footer__heading">Follow</p>
+      <ul>
+        {% if site.social.facebook and site.social.facebook != "" %}<li><a href="{{ site.social.facebook }}">Facebook</a></li>{% endif %}
+        {% if site.social.instagram and site.social.instagram != "" %}<li><a href="{{ site.social.instagram }}">Instagram</a></li>{% endif %}
+        {% if site.social.x and site.social.x != "" %}<li><a href="{{ site.social.x }}">X</a></li>{% endif %}
+        {% if site.social.linkedin and site.social.linkedin != "" %}<li><a href="{{ site.social.linkedin }}">LinkedIn</a></li>{% endif %}
+      </ul>
+      {% endif %}
+    </div>
+
+    <div class="site-footer__legal">
+      <p class="site-footer__heading">Tax status</p>
+      <p>
+        {{ site.org.legal_name }} is a 501(c)(3) tax-exempt non-profit organization.
+        Donations are tax-deductible to the extent allowed by law.
+      </p>
+      <p class="ein">EIN <strong>{{ site.org.ein }}</strong></p>
+    </div>
+
+  </div>
+
+  <div class="wrap site-footer__base">
+    <p>&copy; {{ 'now' | date: "%Y" }} {{ site.org.legal_name }}. 100% of donations are spent on medical aid for Ukraine.</p>
+  </div>
+</footer>

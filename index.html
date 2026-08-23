@@ -1,0 +1,165 @@
+---
+layout: home
+title: "Medical aid to the front line"
+description: "Lifeline for Ukraine Inc. buys the tourniquets, IFAKs, and blood-clotting gauze that front-line medics ask for, and delivers them through trusted partners in Ukraine. 100% of donations are spent on medical aid."
+---
+
+<section class="hero">
+  <div class="wrap hero__inner">
+    <p class="hero__eyebrow">501(c)(3) non-profit &middot; West Hartford, Connecticut</p>
+    <h1 class="hero__title">
+      The supplies that stop the bleeding, bought for the medics who asked for them.
+    </h1>
+    <p class="hero__lede">
+      Lifeline for Ukraine delivers Individual First Aid Kits, tourniquets, and
+      blood-clotting gauze to communities and servicemen impacted by the Russian-Ukrainian
+      war. We are connected directly to doctors and soldiers who tell us what they are out
+      of. <strong>100% of your donation is spent on medical aid.</strong>
+    </p>
+    <p class="hero__actions">
+      <a class="btn btn--donate btn--lg" href="{{ '/donate/' | relative_url }}">Donate</a>
+      <a class="btn btn--ghost btn--lg" href="#how-it-works">How it works</a>
+    </p>
+  </div>
+</section>
+
+{% include stat-band.html %}
+
+<section class="section" id="what-we-send">
+  <div class="wrap">
+    <h2 class="section__title">What we send</h2>
+    <p class="section__lede">
+      Not whatever is cheapest, and not whatever was donated to us. We buy the three things
+      that decide whether someone survives the first ten minutes after an injury.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <h3 class="card__title">Tourniquets</h3>
+        <p class="card__text">
+          A limb wound can kill in three minutes. A tourniquet applied in one stops it.
+          These are consumable — once used, they are gone, which is why the requests never
+          stop coming.
+        </p>
+      </div>
+      <div class="card">
+        <h3 class="card__title">Blood-clotting gauze</h3>
+        <p class="card__text">
+          Hemostatic gauze for the wounds a tourniquet cannot reach: the neck, the
+          shoulder, the groin. It buys the time needed to reach a surgeon.
+        </p>
+      </div>
+      <div class="card">
+        <h3 class="card__title">Individual First Aid Kits</h3>
+        <p class="card__text">
+          A complete IFAK carried on the body — tourniquet, gauze, chest seal,
+          decompression needle, shears, pressure bandage. One kit, one person, one chance.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--mist" id="how-it-works">
+  <div class="wrap">
+    <h2 class="section__title">How your donation gets there</h2>
+    <p class="section__lede">
+      Four steps, no detours. We are a small organization on purpose — it is why nothing is
+      skimmed off along the way.
+    </p>
+
+    <ol class="steps">
+      <li class="step">
+        <p class="step__num">1</p>
+        <h3 class="step__title">Medics tell us what they need</h3>
+        <p class="step__text">
+          We are connected to local doctors and servicemen in Ukraine who communicate their
+          most urgent medical needs directly to us.
+        </p>
+      </li>
+      <li class="step">
+        <p class="step__num">2</p>
+        <h3 class="step__title">You give</h3>
+        <p class="step__text">
+          By PayPal, card, or Zelle. Your gift is tax-deductible and goes into one pool
+          spent only on supplies.
+        </p>
+      </li>
+      <li class="step">
+        <p class="step__num">3</p>
+        <h3 class="step__title">We buy the exact items requested</h3>
+        <p class="step__text">
+          Real medical-grade equipment from suppliers we have vetted &mdash; never
+          counterfeit tourniquets, which are common and lethal.
+        </p>
+      </li>
+      <li class="step">
+        <p class="step__num">4</p>
+        <h3 class="step__title">Trusted partners deliver</h3>
+        <p class="step__text">
+          Partners we have worked with since 2022 carry the supplies the last mile, and
+          confirm receipt. Then we publish what happened.
+        </p>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<section class="section" id="give">
+  <div class="wrap">
+    <h2 class="section__title">What your donation buys</h2>
+    {% include tiers.html %}
+    <p class="section__actions">
+      <a class="btn btn--donate btn--lg" href="{{ '/donate/' | relative_url }}">Donate now</a>
+    </p>
+  </div>
+</section>
+
+{% if site.posts.size > 0 %}
+<section class="section section--mist" id="updates">
+  <div class="wrap">
+    <h2 class="section__title">Latest updates</h2>
+    <p class="section__lede">
+      Where the money went, and what arrived. We publish this because &ldquo;100% goes to
+      aid&rdquo; is a claim, and claims should be checkable.
+    </p>
+    <div class="post-grid">
+      {% for post in site.posts limit: 3 %}
+        {% include post-card.html post=post %}
+      {% endfor %}
+    </div>
+    <p class="section__actions">
+      <a class="btn btn--ghost" href="{{ '/updates/' | relative_url }}">All updates</a>
+    </p>
+  </div>
+</section>
+{% endif %}
+
+<section class="trust">
+  <div class="wrap trust__inner">
+    <div class="trust__item">
+      <h3 class="trust__title">Registered 501(c)(3)</h3>
+      <p class="trust__text">
+        {{ site.org.legal_name }} is a tax-exempt non-profit organization based in
+        {{ site.org.city }}, {{ site.org.state }}. EIN {{ site.org.ein }}. Your donation is
+        tax-deductible to the extent allowed by law.
+      </p>
+    </div>
+    <div class="trust__item">
+      <h3 class="trust__title">100% to medical aid</h3>
+      <p class="trust__text">
+        No salaries and no overhead are taken from your gift. We believe in full financial
+        transparency and are accountable to our donors.
+      </p>
+    </div>
+    <div class="trust__item">
+      <h3 class="trust__title">Working since 2022</h3>
+      <p class="trust__text">
+        Founded in response to Russia&rsquo;s full-scale invasion, with the same partners on
+        the ground ever since.
+      </p>
+    </div>
+  </div>
+</section>
+
+{% include donate-cta.html %}

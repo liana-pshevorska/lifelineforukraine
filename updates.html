@@ -1,0 +1,30 @@
+---
+layout: default
+title: "Updates"
+description: "Deliveries, supply runs, and reports from Lifeline for Ukraine's partners on the ground."
+permalink: /updates/
+---
+
+<section class="page__header">
+  <div class="wrap wrap--narrow">
+    <h1 class="page__title">Updates</h1>
+    <p class="page__subtitle">
+      What we bought, where it went, and what came back from the people who received it.
+      <a href="{{ '/feed.xml' | relative_url }}">Subscribe by RSS</a>.
+    </p>
+  </div>
+</section>
+
+<div class="wrap section section--tight">
+  {% if site.posts.size > 0 %}
+    <div class="post-grid">
+      {% for post in site.posts %}
+        {% include post-card.html post=post %}
+      {% endfor %}
+    </div>
+  {% else %}
+    <p class="empty">No updates published yet. Check back soon.</p>
+  {% endif %}
+</div>
+
+{% include donate-cta.html %}
