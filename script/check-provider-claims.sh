@@ -93,11 +93,13 @@ want none donate/index.html present "Not switched on yet"                   'fal
 want none index.html        present "No processing fees"                    'still fee-free'
 want none donate/index.html absent  "emails a receipt"                      'no receipt promise'
 
-# The headline impact stat carries no provider-specific promise, so it must read
-# identically in every state — that is what lets it live in a plain data file.
-echo "the 100% impact stat is worded to hold under every provider"
+# The "100% to medical aid" promise must read identically in every provider state.
+# It used to live in _data/impact.yml; that file now holds real supply counts, and
+# the claim sits in the trust strip on the homepage instead. The assertion follows
+# it rather than being dropped — the point was never where it lived.
+echo "the 100% claim is worded to hold under every provider"
 for b in unconfigured zeffy paypal paypalme none; do
-  want "$b" index.html present "every dollar we receive buys supplies" 'stat note is provider-independent'
+  want "$b" index.html present "No salaries. No overhead." 'the 100% claim is provider-independent'
   want "$b" index.html absent  "taken from your gift"                  'old ambiguous wording is gone'
 done
 

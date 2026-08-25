@@ -1,0 +1,50 @@
+---
+layout: default
+title: "Every shipment"
+permalink: /shipments/
+description: "Every shipment Lifeline for Ukraine has sent since 2024, and exactly what was in it — tourniquets, IFAKs, Israeli bandages, chest seals, and blood-clotting gauze."
+---
+
+<section class="page__header">
+  <div class="wrap wrap--narrow">
+    <h1 class="page__title">Every shipment</h1>
+    <p class="page__subtitle">
+      What went in each box, since the organization was founded. Nothing here is rounded up
+      and nothing is left out.
+    </p>
+  </div>
+</section>
+
+<div class="wrap wrap--narrow section section--tight">
+
+  <p class="shipments__intro">
+    These are the packages themselves rather than a running total. The
+    <a href="{{ '/about/#ledger' | relative_url }}">ledger on the About page</a> adds them up,
+    and includes the years before we incorporated.
+  </p>
+
+  {%- comment -%}
+    Newest first: someone arriving from a donation page wants to know whether this is
+    still happening, and the top of the list is the answer to that question.
+  {%- endcomment -%}
+  <ol class="shipments">
+    {% for s in site.data.shipments reversed %}
+    <li class="shipment">
+      <h2 class="shipment__period">{{ s.period }}</h2>
+      <ul class="shipment__items">
+        {% for item in s.medical %}<li>{{ item }}</li>{% endfor %}
+      </ul>
+      {% if s.note %}<p class="shipment__note">{{ s.note }}</p>{% endif %}
+    </li>
+    {% endfor %}
+  </ol>
+
+  <p class="shipments__foot">
+    Shipping is paid out of the same pool and is the only cost that is not a supply —
+    usually between $40 and $160 a package, occasionally donated.
+    Everything above was bought with donated money and sent to partners in Ukraine.
+  </p>
+
+</div>
+
+{% include donate-cta.html %}

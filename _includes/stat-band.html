@@ -1,11 +1,30 @@
-<section class="stats" aria-label="Our impact">
-  <div class="wrap stats__grid">
-    {% for stat in site.data.impact %}
-    <div class="stat">
-      <p class="stat__value">{{ stat.value }}</p>
-      <p class="stat__label">{{ stat.label }}</p>
-      {% if stat.note %}<p class="stat__note">{{ stat.note }}</p>{% endif %}
+{%- comment -%}
+  The "as of" date is not decoration. A figure with no date attached is a claim;
+  a figure with one is a record, and the whole point of this band is that every
+  number in it can be traced to the ledger on the About page.
+{%- endcomment -%}
+<section class="stats" aria-labelledby="stats-heading">
+  <div class="wrap">
+    <h2 class="stats__heading" id="stats-heading">
+      What we have sent so far
+      <span class="stats__asof">as of {{ site.data.impact.as_of }}</span>
+    </h2>
+
+    <div class="stats__grid">
+      {% for row in site.data.supplies %}{% if row.headline %}
+      <div class="stat">
+        <p class="stat__value">{{ row.total }}</p>
+        <p class="stat__label">{{ row.headline.label }}</p>
+        {% if row.headline.note %}<p class="stat__note">{{ row.headline.note }}</p>{% endif %}
+      </div>
+      {% endif %}{% endfor %}
     </div>
-    {% endfor %}
+
+    <p class="stats__source">
+      These are three rows from a longer list.
+      <a href="{{ '/about/#ledger' | relative_url }}">See the full supply ledger</a> —
+      including the categories that are less impressive and the one order we had refunded —
+      or <a href="{{ '/shipments/' | relative_url }}">every shipment, package by package</a>.
+    </p>
   </div>
 </section>

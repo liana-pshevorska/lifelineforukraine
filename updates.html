@@ -23,7 +23,15 @@ permalink: /updates/
       {% endfor %}
     </div>
   {% else %}
-    <p class="empty">No updates published yet. Check back soon.</p>
+    {%- comment -%}
+      Not "nothing has happened yet" — a lot has, and saying otherwise reads worse
+      than saying nothing. Point at the ledger, which is the evidence that exists.
+    {%- endcomment -%}
+    <p class="empty">
+      We are writing up past deliveries and will publish them here. In the meantime,
+      <a href="{{ '/about/#ledger' | relative_url }}">the supply ledger</a> lists everything
+      bought and sent since 2022.
+    </p>
   {% endif %}
 </div>
 

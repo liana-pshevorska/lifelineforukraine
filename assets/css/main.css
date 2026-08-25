@@ -221,11 +221,23 @@ code {
 
 /* --- Stat band ------------------------------------------------------------ */
 
-.stats { background: var(--paper); border-bottom: 1px solid var(--line); }
+.stats { background: var(--paper); border-bottom: 1px solid var(--line); padding-block: var(--s5); }
+.stats__heading {
+  font-size: 1.125rem; font-weight: 700; letter-spacing: -0.01em;
+  margin: 0 0 var(--s4); display: flex; flex-wrap: wrap; align-items: baseline;
+  gap: .5rem .75rem;
+}
+.stats__asof {
+  font-size: .8125rem; font-weight: 500; color: var(--ink-soft);
+  letter-spacing: .02em;
+}
 .stats__grid {
   display: grid; gap: var(--s4);
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  padding-block: var(--s5);
+}
+.stats__source {
+  margin: var(--s4) 0 0; font-size: .9375rem; color: var(--ink-mid);
+  max-width: 62ch;
 }
 .stat { text-align: center; }
 .stat__value {
@@ -239,6 +251,85 @@ code {
 }
 .stat__label { font-weight: 700; margin-bottom: .25rem; }
 .stat__note { color: var(--ink-soft); font-size: .9375rem; margin: 0; }
+
+/* --- Photographs ----------------------------------------------------------
+   Deliberately understated: a caption, a hairline, no shadow or rounded-corner
+   treatment. These are records, and dressing them up works against them. */
+
+.photo { margin: 0 auto; padding: 0 var(--s2); max-width: var(--wrap-narrow); }
+.photo img {
+  display: block; width: 100%; height: auto;
+  border: 1px solid var(--line); border-radius: var(--radius);
+}
+.photo figcaption {
+  margin-top: .75rem; font-size: .9rem; color: var(--ink-soft);
+  max-width: 56ch;
+}
+.photo--wide { max-width: 880px; }
+
+/* --- Shipment timeline ----------------------------------------------------
+   A spine with a marker per shipment. The rule is doing real work here: it is
+   what makes two years of continuity legible in one glance, which is the whole
+   argument this page exists to make. */
+
+.shipments__intro, .shipments__foot {
+  color: var(--ink-mid); max-width: 62ch;
+}
+.shipments__foot {
+  margin-top: var(--s4); padding-top: var(--s3);
+  border-top: 1px solid var(--line); font-size: .9375rem;
+}
+
+.shipments {
+  list-style: none; margin: var(--s4) 0 0; padding: 0 0 0 var(--s3);
+  border-left: 2px solid var(--line);
+}
+.shipment { position: relative; padding: 0 0 var(--s4) var(--s3); }
+.shipment:last-child { padding-bottom: 0; }
+.shipment::before {
+  content: ""; position: absolute; left: calc(-1 * var(--s3) - 7px); top: .45rem;
+  width: 12px; height: 12px; border-radius: 50%;
+  background: var(--gold-500); border: 2px solid var(--paper);
+}
+.shipment__period {
+  font-size: 1.0625rem; font-weight: 700; letter-spacing: -0.01em;
+  margin: 0 0 .5rem; color: var(--navy-900);
+}
+.shipment__items {
+  margin: 0; padding: 0; list-style: none;
+  display: flex; flex-wrap: wrap; gap: .4rem .5rem;
+}
+.shipment__items li {
+  background: var(--mist); border: 1px solid var(--line); border-radius: 999px;
+  padding: .25rem .7rem; font-size: .9rem; color: var(--ink-mid);
+  font-variant-numeric: tabular-nums;
+}
+.shipment__note {
+  margin: .6rem 0 0; font-size: .875rem; color: var(--ink-soft); font-style: italic;
+}
+
+/* --- Supply ledger --------------------------------------------------------
+   Deliberately plain. This is a set of books, not a feature comparison — the
+   styling should read as a record someone keeps, not as a marketing table. */
+
+.ledger { width: 100%; border-collapse: collapse; margin: var(--s3) 0 var(--s2); }
+.ledger caption {
+  text-align: left; color: var(--ink-soft); font-size: .9375rem;
+  padding-bottom: var(--s2);
+}
+.ledger th, .ledger td {
+  text-align: left; padding: .7rem .75rem .7rem 0;
+  border-bottom: 1px solid var(--line); vertical-align: baseline;
+}
+.ledger th {
+  font-size: .75rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .07em; color: var(--ink-soft);
+}
+.ledger td:nth-child(2) {
+  font-variant-numeric: tabular-nums; font-weight: 700; white-space: nowrap;
+}
+.ledger td:nth-child(3) { color: var(--ink-soft); font-size: .9375rem; }
+.ledger__wrap { overflow-x: auto; }
 
 /* --- Cards ---------------------------------------------------------------- */
 

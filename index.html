@@ -26,6 +26,20 @@ description: "Lifeline for Ukraine Inc. buys the tourniquets, IFAKs, and blood-c
 
 {% include stat-band.html %}
 
+{%- comment -%}
+  This photograph is the least polished thing on the site and the most persuasive.
+  It is a bed in West Hartford covered in tourniquets. Do not replace it with
+  supplier photography, however much better lit that would be.
+{%- endcomment -%}
+<figure class="photo photo--wide">
+  <img src="{{ '/assets/img/photos/supplies-packed.jpg' | relative_url }}"
+       alt="Tourniquets, Celox gauze pouches and olive first aid kits laid out in rows on a bed, sorted for packing."
+       width="812" height="608" loading="lazy">
+  <figcaption>
+    One shipment, sorted before it is boxed. Every package starts on this bed.
+  </figcaption>
+</figure>
+
 <section class="section" id="what-we-send">
   <div class="wrap">
     <h2 class="section__title">What we send</h2>
@@ -115,25 +129,41 @@ description: "Lifeline for Ukraine Inc. buys the tourniquets, IFAKs, and blood-c
   </div>
 </section>
 
-{% if site.posts.size > 0 %}
 <section class="section section--mist" id="updates">
   <div class="wrap">
-    <h2 class="section__title">Latest updates</h2>
+    <h2 class="section__title">Where it went</h2>
     <p class="section__lede">
-      Where the money went, and what arrived. Any charity can say its money reaches the
-      front line; this is where we show it.
+      Any charity can say its money reaches the front line. Here is every package we have
+      sent since we were founded, and exactly what was in it &mdash;
+      <a href="{{ '/shipments/' | relative_url }}">fifteen shipments and counting</a>.
     </p>
+
+    <figure class="photo">
+      <img src="{{ '/assets/img/photos/handover.jpg' | relative_url }}"
+           alt="Three servicemen standing beside open boxes of supplies outside a building. Their faces have been obscured."
+           width="744" height="992" loading="lazy">
+      <figcaption>
+        A delivery reaching the people who asked for it. We obscure faces and insignia
+        as a matter of course.
+      </figcaption>
+    </figure>
+
+    {% if site.posts.size > 0 %}
     <div class="post-grid">
       {% for post in site.posts limit: 3 %}
         {% include post-card.html post=post %}
       {% endfor %}
     </div>
+    {% endif %}
+
     <p class="section__actions">
+      <a class="btn btn--ghost" href="{{ '/shipments/' | relative_url }}">See every shipment</a>
+      {% if site.posts.size > 0 %}
       <a class="btn btn--ghost" href="{{ '/updates/' | relative_url }}">All updates</a>
+      {% endif %}
     </p>
   </div>
 </section>
-{% endif %}
 
 <section class="trust">
   <div class="wrap trust__inner">

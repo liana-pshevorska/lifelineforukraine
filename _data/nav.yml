@@ -1,5 +1,7 @@
 - title: "What we do"
   url: "/#what-we-send"
+- title: "Shipments"
+  url: "/shipments/"
 - title: "Updates"
   url: "/updates/"
 - title: "About"

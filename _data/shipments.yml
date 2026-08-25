@@ -1,0 +1,114 @@
+# Shipment history, extracted from the running ledger.
+#
+# SCOPE: from the "Lifeline for Ukraine — official donations" heading in the
+# ledger onward. Everything before that was Liana raising money among friends,
+# before the organization existed.
+#
+# WHY THIS LISTS ONLY MEDICAL SUPPLIES: the source ledger is a personal document
+# and records Liana's own spending alongside the organization's — sleeping bags,
+# food and similar were bought with her own money and simply kept in the same
+# running total. Donated funds buy medical supplies only, which is what makes the
+# "100% of donations are spent on medical aid" claim on the site true. Do not add
+# lines here from the source ledger without checking which pot paid for them.
+#
+# Water purification tablets count as medical, and so do hand and toe warmers:
+# in winter, cold injury is a casualty category, and those are bought for the
+# same reason the tourniquets are.
+#
+# Confidence check: chest seals across all shipments total 186, and compression
+# bandages total 24 (6 mini + 18 Rhino) — both match the summary table exactly.
+
+- period: "June – July 2024"
+  medical:
+    - "20 tourniquets"
+    - "20 Israeli bandages"
+
+- period: "August 2024"
+  medical:
+    - "7 medical kits"
+    - "20 tourniquets"
+    - "25 Israeli bandages"
+    - "8 Celox blood-clotting gauze"
+
+- period: "September 2024"
+  medical:
+    - "30 tourniquets"
+    - "32 Israeli bandages"
+    - "3 medical kits"
+    - "6 Celox blood-clotting gauze"
+
+- period: "October – November 2024"
+  medical:
+    - "8 medical kits"
+    - "10 Israeli bandages"
+    - "4 Celox blood-clotting gauze"
+    - "80 hand warmers"
+
+- period: "December 2024 – January 2025"
+  medical:
+    - "16 tourniquets"
+    - "120 hand warmers and 160 toe warmers"
+
+- period: "February 2025"
+  medical:
+    - "9 medical kits"
+    - "34 Israeli bandages"
+    - "10 tourniquets"
+    - "700 water purification tablets"
+    - "80 hand warmers and 160 toe warmers"
+
+- period: "March 2025"
+  medical:
+    - "18 tourniquets"
+    - "5 IFAK kits"
+    - "2,250 water purification tablets"
+
+- period: "April 2025"
+  medical:
+    - "40 tourniquets"
+    - "4 IFAK kits"
+
+- period: "June – July 2025"
+  medical:
+    - "45 tourniquets"
+    - "13 medical kits"
+
+- period: "August – October 2025"
+  medical:
+    - "45 tourniquets"
+    - "16 medical kits"
+
+- period: "November 2025"
+  medical:
+    - "130 chest seals — 60 open, 70 vented"
+    - "77 Israeli bandages"
+    - "3 medical kits"
+    - "40 foot and 40 leg warmers"
+  note: "Shipping was donated this month."
+
+- period: "January 2026"
+  medical:
+    - "82 Israeli bandages"
+    - "10 tourniquets"
+    - "1 IFAK kit"
+    - "Around 780 pairs of hand and toe warmers, 300 of them bought inside Ukraine"
+
+- period: "February – April 2026"
+  medical:
+    - "133 Israeli bandages"
+    - "8 IFAK kits"
+    - "20 vented chest seals"
+
+- period: "May – June 2026"
+  medical:
+    - "36 vented chest seals"
+    - "30 Israeli bandages"
+    - "10 IFAK kits"
+    - "10 tourniquets"
+    - "18 Rhino and 6 mini compression bandages"
+
+- period: "July – August 2026"
+  medical:
+    - "18 Israeli bandages"
+    - "7 IFAK kits"
+    - "12 tourniquets"
