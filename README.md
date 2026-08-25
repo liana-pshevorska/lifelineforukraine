@@ -146,18 +146,43 @@ One-time setup:
 
 ## Running it locally (optional)
 
-Only needed to preview changes before pushing. macOS ships Ruby 2.6, which is too old, so
-install a current Ruby first:
+Only needed to preview changes before pushing — GitHub Pages builds and deploys on its
+own either way.
 
 ```sh
-brew install ruby
-export PATH="$(brew --prefix ruby)/bin:$PATH"   # add this to ~/.zshrc to make it stick
-
-bundle install
-bundle exec jekyll serve --livereload           # → http://localhost:4000
+script/serve.sh          # → http://localhost:4000, rebuilds as you save
 ```
 
-`bundle exec jekyll build` writes the site to `_site/` (git-ignored).
+First run installs gems into `vendor/preview/` (git-ignored) and takes a minute; after
+that it starts in seconds. `script/serve.sh --port 4001` if 4000 is taken.
+
+### Why the preview does not use the root `Gemfile`
+
+The root `Gemfile` pins `github-pages`, which is what GitHub actually runs. It is kept
+as the record of production, but it **cannot build this site locally on a current Ruby**:
+it pins `liquid 4.0.3`, which calls `String#tainted?` — a method removed in Ruby 3.2 —
+and `github-pages` itself needs Ruby 2.7 or newer. That leaves a narrow window of Ruby
+2.7–3.1, and neither Ruby on this machine is in it: macOS ships 2.6, and Homebrew
+installs 4.x. Pinning a decade-old Ruby just to preview a static site is not worth it.
+
+So the preview has its own pins in `script/preview/Gemfile`, running a current Jekyll with
+the same three plugins. The one difference that matters: **the preview is Jekyll 4, GitHub
+builds with Jekyll 3.9.** For this site — plain Liquid, kramdown, and those three plugins
+— the output is the same, but trust the deployed build over the preview for anything
+subtle.
+
+### If Ruby is missing
+
+`script/serve.sh` looks for Homebrew's Ruby at `/opt/homebrew/opt/ruby/bin` and puts it
+first on `PATH` for the length of the script. macOS ships Ruby 2.6 as `/usr/bin/ruby`,
+which is too old and otherwise wins. Install with `brew install ruby` — no shell-profile
+edit needed, the script handles the `PATH` itself.
+
+One wrinkle worth knowing if `bundle install` ever fails partway through with a
+permissions error on `/opt/homebrew/lib/ruby/...`: that happens when Homebrew was
+installed under a *different* account than the one you are logged in as, so its gem
+directory is not yours to write to. `script/serve.sh` avoids it by installing gems under
+the project instead of into the Ruby install.
 
 ---
 
@@ -172,6 +197,9 @@ _data/
 _layouts/        Page shells (default, page, post, home)
 _includes/       Reusable blocks — donate cards, stat band, post cards
 _posts/          One Markdown file per update
+script/
+  serve.sh       Local preview — see "Running it locally"
+  preview/       Gem pins for that preview (not used by GitHub Pages)
 assets/
   css/main.css   The entire stylesheet
   js/copy.js     Copy-to-clipboard for the Zelle tag

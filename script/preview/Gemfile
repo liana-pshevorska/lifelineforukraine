@@ -1,0 +1,19 @@
+# Local preview only. Never used by GitHub Pages.
+#
+# The root Gemfile pins `github-pages`, which is what GitHub actually runs. That
+# gem cannot be used for a local preview on this machine: it pins liquid 4.0.3,
+# which calls String#tainted? — removed in Ruby 3.2 — so it needs a Ruby older
+# than 3.2, while the Ruby installed here is 4.0. Rather than chase an ancient
+# Ruby, the preview runs a current Jekyll with the same three plugins.
+#
+# The difference that matters: this is Jekyll 4, GitHub builds with Jekyll 3.9.
+# For this site — plain Liquid, kramdown, and the three plugins below — the
+# output is the same. Trust the deployed build, not this one, for anything
+# subtle. If a page renders here but not on Pages, that gap is why.
+source "https://rubygems.org"
+
+gem "jekyll", "~> 4.3"
+gem "jekyll-feed"
+gem "jekyll-seo-tag"
+gem "jekyll-sitemap"
+gem "webrick", "~> 1.8"

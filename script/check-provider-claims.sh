@@ -8,11 +8,20 @@
 # add another claim that depends on the provider, add a case here.
 #
 # Usage:  script/check-provider-claims.sh
-# Needs:  bundle exec jekyll (see README, "Running it locally")
 
 set -euo pipefail
 cd "$(dirname "$0")/.."
 root="$PWD"
+
+# Same Ruby and gem set as script/serve.sh — see the comment in script/preview/Gemfile
+# for why the preview does not use the root Gemfile.
+brew_ruby="/opt/homebrew/opt/ruby/bin"
+if [ -x "$brew_ruby/ruby" ]; then PATH="$brew_ruby:$PATH"; export PATH; fi
+export BUNDLE_GEMFILE="$root/script/preview/Gemfile"
+if ! bundle check >/dev/null 2>&1; then
+  echo "Installing preview gems (first run only)..."
+  bundle install
+fi
 tmp="$(mktemp -d)"
 trap 'rm -rf "$tmp"' EXIT
 
