@@ -19,13 +19,41 @@ Each is marked `TODO` in the file listed.
 
 | What | Where | Until then |
 | --- | --- | --- |
-| Zelle email address (optional) | `_config.yml` → `donate.zelle_email` | Only the Zelle Tag is shown |
-| Public contact email | `_config.yml` → `org.email` | The phone number is shown instead |
 | Real impact numbers | `_data/impact.yml` | The homepage shows the word `TODO` |
 | Real per-item costs | `_data/tiers.yml` | Placeholder amounts |
 | Team / board section, Form 990 link | `about.md` | Section omitted |
 | Delete the template post | `_posts/2026-08-22-welcome.md` | A post titled "TEMPLATE" is live |
+| Social links | `_config.yml` → `social` | The "Follow" column is hidden |
 | Photos | `assets/img/` | Layout works without them |
+
+Done: the Zeffy link, the contact and Zelle email addresses, and the logo assets.
+
+### The logo
+
+`assets/img/logo.svg` is the source of truth — a hand-traced vector rebuild of the
+original artwork, flat-coloured and about 7 KB. Every other image is derived from it:
+
+| File | Size | Used by |
+| --- | --- | --- |
+| `logo.svg` | 1024pt square | The site header, and anything that should stay crisp |
+| `logo.png` | 512px | Raster fallback for print, email, and anywhere SVG is not accepted |
+| `og-image.png` | 1200×630 | Social preview card, wired up via `image` in `_config.yml` → `defaults` |
+| `apple-touch-icon.png` | 180px | iOS home-screen icon |
+| `favicon.svg` / `favicon-32.png` | 32pt | Browser tab |
+
+Two things worth knowing before you change any of them:
+
+- **The favicon is a simplified mark, not the logo.** Below roughly 48px the parachute
+  and the ECG line turn to mush, so the tab icon keeps only the cross on the blue/gold
+  field. That is deliberate — do not swap in the full logo there.
+- **The gold is the site's `#F5C518`, not the artwork's original `#F4C230`.** The two were
+  already within a hair of each other, and matching exactly means the logo, the Donate
+  button, and the stat figures all read as one colour.
+
+The untouched original is kept at `assets/img/source/logo-original.png`. It is excluded
+from the build, so it is version-controlled but never published. To re-export the rasters
+after editing `logo.svg`, open the SVG at the size you want and export — no build step
+depends on them.
 
 ### Online giving: why Zeffy
 
@@ -109,7 +137,10 @@ One-time setup:
 3. Back in **Settings → Pages**, tick **Enforce HTTPS** once the certificate is issued
    (can take up to 24 hours).
 4. Set `url: "https://lifelineforukraine.org"` in `_config.yml` so social preview cards and
-   the RSS feed use absolute links.
+   the RSS feed use absolute links. This one matters more than it looks: Facebook, X, and
+   iMessage all reject a relative `og:image`, so until `url` is set the link preview shows
+   no card at all. On a `github.io` address GitHub fills `url` in during the build, but a
+   custom domain does not — set it by hand.
 
 ---
 
@@ -144,7 +175,7 @@ _posts/          One Markdown file per update
 assets/
   css/main.css   The entire stylesheet
   js/copy.js     Copy-to-clipboard for the Zelle tag
-  img/           QR code, favicon, photos
+  img/           Logo, favicon, social card, Zelle QR, photos
 index.html       Homepage
 donate.html      Donation page
 updates.html     Updates archive

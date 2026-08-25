@@ -22,8 +22,7 @@ org:
   country: United States
   phone: "617-528-8670"
   phone_link: "+16175288670"
-  # TODO: add a public contact address before launch
-  email: ""
+  email: "lifelineforukraine@gmail.com"
 
 # ─── Donations ───────────────────────────────────────────────────────────────
 donate:
@@ -53,8 +52,8 @@ donate:
   # Zelle: no fees at all, but no web integration either — it lives in bank apps.
   zelle_tag: "lifelineforukraine"
   zelle_qr: "/assets/img/zelle-qr.png"
-  # TODO: confirm the Zelle-enrolled email address shown in your bank app
-  zelle_email: ""
+  # The Zelle-enrolled address, confirmed in the bank app.
+  zelle_email: "lifelineforukraine@gmail.com"
 
 # ─── Social (leave blank to hide the link) ───────────────────────────────────
 social:
@@ -76,12 +75,17 @@ feed:
   path: /feed.xml
 
 defaults:
+  # `image` is the social preview card. A post that sets its own `image:` in front
+  # matter overrides it, so update photos win over the generic card.
   - scope: { path: "", type: "posts" }
     values: { layout: "post" }
   - scope: { path: "" }
-    values: { layout: "page" }
+    values: { layout: "page", image: "/assets/img/og-image.png" }
 
 exclude:
+  # The master logo artwork is version-controlled but never published: every asset
+  # the site serves is derived from assets/img/logo.svg, not from this file.
+  - assets/img/source
   - Gemfile
   - Gemfile.lock
   - vendor

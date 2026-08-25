@@ -7,7 +7,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+  {%- comment -%}
+    favicon.svg is a simplified mark, not the full logo: below about 48px the
+    parachute and ECG line turn to mush, so the tab icon drops to the cross alone.
+  {%- endcomment -%}
   <link rel="icon" href="{{ '/assets/img/favicon.svg' | relative_url }}" type="image/svg+xml">
+  <link rel="alternate icon" href="{{ '/assets/img/favicon-32.png' | relative_url }}" sizes="32x32">
+  <link rel="apple-touch-icon" href="{{ '/assets/img/apple-touch-icon.png' | relative_url }}">
   <meta name="theme-color" content="#0A2145">
   {% seo %}
   {% feed_meta %}

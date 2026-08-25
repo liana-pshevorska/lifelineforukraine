@@ -151,7 +151,7 @@ code {
 }
 
 .brand { display: flex; align-items: center; gap: .625rem; text-decoration: none; }
-.brand__mark { flex: none; display: block; }
+.brand__mark { flex: none; display: block; width: 44px; height: 44px; }
 .brand__text { display: flex; flex-direction: column; line-height: 1.2; }
 .brand__name { color: #fff; font-weight: 800; font-size: 1.0625rem; letter-spacing: -0.02em; }
 .brand__sub {
@@ -177,6 +177,7 @@ code {
    whole document and clips every section below it. */
 @media (max-width: 700px) {
   .brand__sub { display: none; }
+  .brand__mark { width: 36px; height: 36px; }
   .site-header__inner { padding-block: .625rem; column-gap: var(--s2); }
   .site-header__cta { order: 2; margin-left: auto; }
   .site-nav {
