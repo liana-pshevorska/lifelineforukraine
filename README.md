@@ -128,7 +128,7 @@ One-time setup:
 
 ### Custom domain
 
-1. **Settings → Pages → Custom domain**, enter e.g. `lifelineforukraine.org`, save.
+1. **Settings → Pages → Custom domain**, enter e.g. `lifelineforukraine.com`, save.
    GitHub writes a `CNAME` file into the repo for you.
 2. At the domain registrar, create these DNS records:
    - `A` records for the apex domain pointing to `185.199.108.153`, `185.199.109.153`,
@@ -136,7 +136,7 @@ One-time setup:
    - a `CNAME` record for `www` pointing to `<user>.github.io`
 3. Back in **Settings → Pages**, tick **Enforce HTTPS** once the certificate is issued
    (can take up to 24 hours).
-4. Set `url: "https://lifelineforukraine.org"` in `_config.yml` so social preview cards and
+4. Set `url: "https://lifelineforukraine.com"` in `_config.yml` so social preview cards and
    the RSS feed use absolute links. This one matters more than it looks: Facebook, X, and
    iMessage all reject a relative `og:image`, so until `url` is set the link preview shows
    no card at all. On a `github.io` address GitHub fills `url` in during the build, but a

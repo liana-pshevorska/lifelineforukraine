@@ -6,9 +6,9 @@ description: >-
   Kits, tourniquets, and blood-clotting gauze to trusted partners in Ukraine.
   100% of donations are spent on medical aid.
 
-# Set this to your final address once the domain is live, e.g. https://lifelineforukraine.org
-# GitHub Pages fills it in automatically if you leave it blank.
-url: ""
+# The live address. Social preview cards and the RSS feed need it to build absolute
+# links; a custom domain is not filled in by GitHub Pages, so it is set by hand.
+url: "https://lifelineforukraine.com"
 baseurl: ""
 
 # ─── Organization details (used across the site — edit here, nowhere else) ───
