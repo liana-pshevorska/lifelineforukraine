@@ -114,32 +114,6 @@ description: "Lifeline for Ukraine Inc. buys the tourniquets, IFAKs, and blood-c
   </div>
 </section>
 
-<section class="section section--mist" id="updates">
-  <div class="wrap">
-    <h2 class="section__title">Where it went</h2>
-    <p class="section__lede">
-      Any charity can say its money reaches the front line. Here is every package we have
-      sent since we were founded, and exactly what was in it &mdash;
-      <a href="{{ '/shipments/' | relative_url }}">fifteen shipments and counting</a>.
-    </p>
-
-    {% if site.posts.size > 0 %}
-    <div class="post-grid">
-      {% for post in site.posts limit: 3 %}
-        {% include post-card.html post=post %}
-      {% endfor %}
-    </div>
-    {% endif %}
-
-    <p class="section__actions">
-      <a class="btn btn--ghost" href="{{ '/shipments/' | relative_url }}">See every shipment</a>
-      {% if site.posts.size > 0 %}
-      <a class="btn btn--ghost" href="{{ '/updates/' | relative_url }}">All updates</a>
-      {% endif %}
-    </p>
-  </div>
-</section>
-
 <section class="trust">
   <div class="wrap trust__inner">
     <div class="trust__item">
