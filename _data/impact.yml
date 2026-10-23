@@ -5,4 +5,4 @@
 # with `headline:`, so the homepage band and the published ledger cannot disagree
 # — keeping two copies of the same total in two files is how a site ends up
 # claiming two different numbers.
-as_of: "August 2026"
+as_of: "October 2026"

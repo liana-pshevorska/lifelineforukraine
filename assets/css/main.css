@@ -266,6 +266,7 @@ code {
   max-width: 56ch;
 }
 .photo--wide { max-width: 880px; }
+.updates__photo { margin-top: var(--s5); padding: 0; }
 
 /* --- Shipment timeline ----------------------------------------------------
    A spine with a marker per shipment. The rule is doing real work here: it is

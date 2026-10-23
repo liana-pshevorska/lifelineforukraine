@@ -15,36 +15,34 @@
 # totals cannot drift apart from the ledger.
 
 - item: "Israeli / trauma bandages"
-  total: "~627"
-  note: "Largest category by unit count"
+  total: "~726"
   headline:
     label: "Trauma bandages"
     note: "Our largest category by unit count, and the one medics reorder most"
 
 - item: "Tourniquets"
-  total: "~376"
-  note: "Excludes 15 refunded (Swiss Link, December 2023)"
+  total: "~391"
   headline:
     label: "Tourniquets sent"
     note: "Genuine CAT tourniquets — the single most effective tool against battlefield blood loss"
 
 - item: "IFAK / medical kits"
-  total: "~160"
+  total: "~171"
   headline:
     label: "IFAKs delivered"
     note: "Complete Individual First Aid Kits, carried on the body by one person"
 
 - item: "Chest seals"
   total: "186"
-  note: "60 open, 126 vented"
 
 - item: "Celox blood-clotting gauze"
   total: "24"
 
 - item: "Compression bandages"
   total: "24"
-  note: "6 mini, 18 Rhino Rescue — May to June 2026"
 
 - item: "Water purifying tablets"
   total: "~3,150"
-  note: "All within February to March 2025"
+
+- item: "Cardio device"
+  total: "1"

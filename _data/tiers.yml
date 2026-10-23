@@ -6,10 +6,7 @@
 - amount: 75
   item: "Blood-clotting gauze"
   description: "Hemostatic gauze for wounds a tourniquet cannot reach — junctional injuries to the neck, shoulder, and groin."
-- amount: 150
+- amount: 70
   item: "One complete IFAK"
-  description: "A full Individual First Aid Kit: tourniquet, gauze, chest seal, decompression needle, shears, and a pressure bandage."
+  description: "A full Individual First Aid Kit: a genuine CAT tourniquet, an Israeli-style pressure dressing, compressed gauze, trauma shears, a splint, and a thermal blanket."
   featured: true
-- amount: 750
-  item: "Five IFAKs for a squad"
-  description: "Enough kits to equip a full squad before rotation to a front-line position."

@@ -11,9 +11,8 @@
 # "100% of donations are spent on medical aid" claim on the site true. Do not add
 # lines here from the source ledger without checking which pot paid for them.
 #
-# Water purification tablets count as medical, and so do hand and toe warmers:
-# in winter, cold injury is a casualty category, and those are bought for the
-# same reason the tourniquets are.
+# Water purification tablets count as medical. Hand and toe warmers were bought
+# too but are deliberately not listed here.
 #
 # Confidence check: chest seals across all shipments total 186, and compression
 # bandages total 24 (6 mini + 18 Rhino) — both match the summary table exactly.
@@ -42,12 +41,10 @@
     - "8 medical kits"
     - "10 Israeli bandages"
     - "4 Celox blood-clotting gauze"
-    - "80 hand warmers"
 
 - period: "December 2024 – January 2025"
   medical:
     - "16 tourniquets"
-    - "120 hand warmers and 160 toe warmers"
 
 - period: "February 2025"
   medical:
@@ -55,7 +52,6 @@
     - "34 Israeli bandages"
     - "10 tourniquets"
     - "700 water purification tablets"
-    - "80 hand warmers and 160 toe warmers"
 
 - period: "March 2025"
   medical:
@@ -83,7 +79,6 @@
     - "130 chest seals — 60 open, 70 vented"
     - "77 Israeli bandages"
     - "3 medical kits"
-    - "40 foot and 40 leg warmers"
   note: "Shipping was donated this month."
 
 - period: "January 2026"
@@ -91,7 +86,6 @@
     - "82 Israeli bandages"
     - "10 tourniquets"
     - "1 IFAK kit"
-    - "Around 780 pairs of hand and toe warmers, 300 of them bought inside Ukraine"
 
 - period: "February – April 2026"
   medical:
